@@ -105,3 +105,10 @@ body::-webkit-scrollbar-track {
   background: transparent;
 }
 
+:root {
+  --font-mont: "Montserrat", sans-serif;
+}
+
+p {
+  font-family: var(--font-mont);
+}
