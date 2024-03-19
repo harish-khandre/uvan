@@ -14,7 +14,6 @@ interface BlogData {
 
 export const IntroBlogCard = () => {
   const [blogs, setBlogs] = useState<BlogData[]>([]);
-
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -43,13 +42,10 @@ export const IntroBlogCard = () => {
   }, []);
 
   return (
-    <section className="body-font space-y-8 ml-8 h-full">
+    <section className="body-font cursor-pointer space-y-8 ml-8 h-full">
       {blogs.map((blog) => (
-        <Link key={blog._id} href={`/${blog._id}`} className="w-full">
-          <div
-            key={blog._id}
-            className="container mx-auto bg-zinc-50 flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center"
-          >
+        <Link href={`/blog/${blog._id}`} key={blog._id}>
+          <div className="container  mx-auto bg-zinc-50 flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
             <div className="w-full md:w-1/4 lg:w-1/5 mb-4 md:mb-0 flex justify-center">
               <Image
                 className="object-cover aspect-square transition-all duration-300 rounded-lg cursor-pointer lg:filter lg:grayscale lg:group-hover:grayscale-0"
