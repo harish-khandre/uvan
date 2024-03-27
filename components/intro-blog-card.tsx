@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { format } from "date-fns";
+import HomeSkeletonCard from "./home-skeleton-card";
 
 interface BlogData {
   _id: string;
@@ -10,13 +12,16 @@ interface BlogData {
   content: string;
   thumbnail: string;
   category: string;
+  createdAt: any;
 }
 
 export const IntroBlogCard = () => {
   const [blogs, setBlogs] = useState<BlogData[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
+        setLoading(true);
         const response = await fetch("/api/blogs", {
           method: "GET",
           headers: {
@@ -30,9 +35,9 @@ export const IntroBlogCard = () => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-
         const data = await response.json();
         setBlogs(data);
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -43,12 +48,13 @@ export const IntroBlogCard = () => {
 
   return (
     <section className="body-font cursor-pointer space-y-8 ml-8 h-full">
+      {loading && <HomeSkeletonCard />}
       {blogs.map((blog) => (
         <Link href={`/blog/${blog._id}`} key={blog._id}>
-          <div className="container  mx-auto bg-zinc-50 flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
+          <div className="container  mx-auto  flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
             <div className="w-full md:w-1/4 lg:w-1/5 mb-4 md:mb-0 flex justify-center">
               <Image
-                className="object-cover aspect-square transition-all duration-300 rounded-lg cursor-pointer lg:filter lg:grayscale lg:group-hover:grayscale-0"
+                className="object-cover aspect-square  rounded-lg "
                 width={150}
                 height={150}
                 alt={blog.title}
@@ -62,9 +68,14 @@ export const IntroBlogCard = () => {
               <p className="mb-4 text-gray-900 line-clamp-2 font-medium leading-relaxed">
                 {blog.content}
               </p>
-              <p className="text-xs bg-zinc-200 rounded-full px-4 py-2">
-                {blog.category}
-              </p>
+              <div className="flex justify-center items-center gap-x-4">
+                <p className="text-xs bg-zinc-200 rounded-full px-4 py-2">
+                  {blog.category}
+                </p>
+                <p className="text-xs font-medium">
+                  {format(blog.createdAt, "MMMM dd, yyyy")}
+                </p>
+              </div>
             </div>
           </div>
         </Link>

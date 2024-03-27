@@ -9,7 +9,9 @@ export default function Home() {
       <Suspense fallback={<Loading />}>
         <Categories />
       </Suspense>
-      <Blogs />
+      <Suspense fallback={<Loading />}>
+        <Blogs />
+      </Suspense>
     </>
   );
 }

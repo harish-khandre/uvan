@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Merriweather } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
+import { Navbar } from "@/components/navbar";
 
 const merri = Merriweather({ weight: "400", subsets: ["latin"] });
 

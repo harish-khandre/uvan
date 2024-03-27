@@ -1,14 +1,13 @@
 "use client";
 import { useState } from "react";
 
-export default () => {
+export const Navbar = () => {
   const [state, setState] = useState(false);
 
   const navigation = [
-    { title: "Features", path: "javascript:void(0)" },
-    { title: "Integrations", path: "javascript:void(0)" },
-    { title: "Customers", path: "javascript:void(0)" },
-    { title: "Pricing", path: "javascript:void(0)" },
+    { title: "Youtube", path: "javascript:void(0)" },
+    { title: "Instagram", path: "javascript:void(0)" },
+    { title: "Telegram", path: "javascript:void(0)" },
   ];
 
   return (
