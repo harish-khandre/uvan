@@ -5,9 +5,9 @@ export const Navbar = () => {
   const [state, setState] = useState(false);
 
   const navigation = [
-    { title: "Youtube", path: "javascript:void(0)" },
-    { title: "Instagram", path: "javascript:void(0)" },
-    { title: "Telegram", path: "javascript:void(0)" },
+    { title: "Youtube", path: "https://www.youtube.com/@UvanTech" },
+    { title: "Instagram", path: "https://www.instagram.com/uvantech/" },
+    { title: "Telegram", path: "https://t.me/uvantech" },
   ];
 
   return (
