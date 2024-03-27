@@ -2,6 +2,7 @@
 import Loading from "@/app/loading";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { LatestSkeleton } from "./latest-skeleton";
 
 interface BlogData {
   _id: string;
@@ -45,13 +46,13 @@ export const Latest = () => {
   return (
     <>
       <div className="other-section w-full ">
-        {loading && <Loading />}
         <div className="h-full space-y-4 flex justify-start m-2 items-start flex-col ">
           <div className="border-b">
             <h1 className="text-lg sm:text-2xl font-bold text-gray-500">
               Latest Blog
             </h1>
           </div>
+          {loading && <LatestSkeleton />}
           {blog.map((blog) => (
             <div
               key={blog._id}
