@@ -13,8 +13,8 @@ export default function Categories() {
     fetch("/api/blogs/categories")
       .then((res) => res.json())
       .then((data) => {
-        setLoading(false);
         setCategories(Array.from(data));
+        setLoading(false);
       })
       .catch((err) => console.error(err));
   }, []);

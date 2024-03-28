@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -14,11 +15,11 @@ export const Navbar = () => {
     <nav className="bg-white border-b border-gray-100 w-full md:static md:text-sm ">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-1 md:block">
-          <a href="javascript:void(0)">
+          <Link href="/">
             <h1 className="text-2xl sm:text-4xl font-bold font-mono tracking-wide ">
               Uvan
             </h1>
-          </a>
+          </Link>
           <div className="md:hidden">
             <button
               className="text-gray-500 hover:text-gray-800"
@@ -63,9 +64,9 @@ export const Navbar = () => {
             {navigation.map((item, idx) => {
               return (
                 <li key={idx} className="text-gray-700 hover:text-indigo-600">
-                  <a href={item.path} className="block">
+                  <Link href={item.path} className="block">
                     {item.title}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

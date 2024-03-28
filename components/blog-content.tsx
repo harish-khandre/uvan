@@ -24,7 +24,7 @@ const BlogContent = ({ content }: any) => {
   }
   return (
     <div>
-      <BlockNoteView editor={editor} theme="light" editable={false} />
+      <BlockNoteView  editor={editor} theme="light" editable={false} />
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import YoutubeEmbed from "./youtube-embed";
 import BlogContent from "./blog-content";
+import { OtherBlogs } from "./other-blogs";
 
 interface BlogData {
   _id: string;
@@ -62,14 +63,8 @@ export const BlogCard = ({ id }: { id: string }) => {
             </div>
           </div>
           <div className="other-section w-[30%] p-1 space-y-4 h-full ">
-            <div className="rounded bg-gray-50 border h-96">
-              <p>About jay</p>
-            </div>
-            <div className="rounded bg-gray-50 border h-96">
-              <p>Other Categories</p>
-            </div>
-            <div className="  rounded bg-gray-50 border h-96">
-              <p>Other Blogs</p>
+            <div className=" h-96">
+              <OtherBlogs />
             </div>
           </div>
         </div>
