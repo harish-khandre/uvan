@@ -13,10 +13,10 @@ export default function Categories() {
     fetch("/api/blogs/categories")
       .then((res) => res.json())
       .then((data) => {
+        setLoading(false);
         setCategories(Array.from(data));
       })
       .catch((err) => console.error(err));
-    setLoading(false);
   }, []);
   return (
     <div className="flex justify-start lg:pl-16 pt-10 items-center h-full w-[70%]">

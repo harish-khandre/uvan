@@ -12,7 +12,6 @@ interface BlogData {
   category: string;
 }
 export const Latest = () => {
-  // TODO: Import latest blog or video and map them to cards with links to the blog or video page
   const [blog, setBlog] = useState<BlogData[]>([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -65,7 +64,7 @@ export const Latest = () => {
                 src={blog.thumbnail || "https://dummyimage.com/720x600"}
                 className="object-cover aspect-square transition-all duration-300 rounded-lg cursor-pointer lg:filter lg:grayscale lg:group-hover:grayscale-0"
               />
-              <div className="">
+              <div className="w-56">
                 <h1 className="text-lg line-clamp-1">{blog.title}</h1>
                 <p className="text-sm line-clamp-1">{blog.content}</p>
               </div>

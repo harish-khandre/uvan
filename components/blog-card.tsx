@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import YoutubeEmbed from "./youtube-embed";
+import BlogContent from "./blog-content";
 
 interface BlogData {
   _id: string;
@@ -36,10 +37,6 @@ export const BlogCard = ({ id }: { id: string }) => {
     fetchBlogs();
   }, []);
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   return (
     <>
       {blogs.map((blog) => (
@@ -60,7 +57,7 @@ export const BlogCard = ({ id }: { id: string }) => {
               </p>
               <hr />
               <section className="text-lg sm:text-2xl  p-3">
-                {blog.content}
+                <BlogContent content={blog.content} />
               </section>
             </div>
           </div>
