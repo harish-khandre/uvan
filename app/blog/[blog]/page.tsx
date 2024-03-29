@@ -5,7 +5,7 @@ import { useParams } from "next/navigation";
 
 export default function Blog() {
   const params = useParams();
-  const id = params.blog as string
+  const id = params.blog as string;
 
   if (!id || id === undefined || id === null) {
     return (

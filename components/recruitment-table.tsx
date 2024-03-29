@@ -55,20 +55,26 @@ export const RT = () => {
           </tr>
         </thead>
         <tbody>
-          {loading && <RtSkeleton />}
-          {data.map((item) => (
-            <tr
-              key={item.jobTitle}
-              className="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
-            >
-              <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
-                {item.jobTitle}
-              </td>
-              <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
-                {item.lastDate}
-              </td>
-            </tr>
-          ))}
+          {loading ? (
+            <RtSkeleton />
+          ) : (
+            //@ts-ignore
+            <>
+              {data.map((item) => (
+                <tr
+                  key={item.jobTitle}
+                  className="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
+                >
+                  <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
+                    {item.jobTitle}
+                  </td>
+                  <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
+                    {item.lastDate}
+                  </td>
+                </tr>
+              ))}
+            </>
+          )}
         </tbody>
       </table>
     </div>

@@ -36,7 +36,7 @@ export const BlogCard = ({ id }: { id: string }) => {
       }
     };
     fetchBlogs();
-  }, []);
+  }, [id]);
 
   return (
     <>
