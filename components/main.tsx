@@ -7,7 +7,7 @@ export const Main = () => {
       <div className="blogs-section w-[100%] md:w-[70%]    ">
         <IntroBlogCard />
       </div>
-      <div className="other-section hidden md:inline-block md:w-[30%] border-l border-zinc-100 ">
+      <div className="other-section hidden md:block md:w-[30%] border-l border-zinc-100 ">
         <RT />
       </div>
     </div>

@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
     const query = { _id: new ObjectId(id) };
     const blog = await db.collection("Uvan").find(query).toArray();
 
-    if (!blog) {
+    if (!blog || (Array.isArray(blog) && blog.length === 0)) {
       return NextResponse.json({ error: "Blog not found" }, { status: 404 });
     }
 

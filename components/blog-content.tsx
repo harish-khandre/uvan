@@ -9,9 +9,9 @@ const BlogContent = ({ content }: any) => {
   const [initialContent, setInitialContent] = useState<PartialBlock[]>([]);
 
   useEffect(() => {
-      const parsedContent = JSON.parse(content);
-      setInitialContent(parsedContent);
-    }, [content]);
+    const parsedContent = JSON.parse(content);
+    setInitialContent(parsedContent);
+  }, [content]);
 
   const editor = useMemo(() => {
     return initialContent.length > 0
@@ -24,7 +24,7 @@ const BlogContent = ({ content }: any) => {
   }
   return (
     <div>
-      <BlockNoteView  editor={editor} theme="light" editable={false} />
+      <BlockNoteView editor={editor} theme="light" editable={false} />
     </div>
   );
 };

@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import BlogContent from "@/components/blog-content";
 
@@ -14,31 +11,37 @@ interface BlogData {
   createdAt: string;
 }
 
-export default function Category({ params }: { params: { slug: string } }) {
-  const [blogs, setBlogs] = useState<BlogData[]>([]);
-  const [error, setError] = useState(null);
+const fetchCategory = async (category: string) => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/category/${category}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        next: {
+          revalidate: 3600,
+        },
+      },
+    );
 
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default async function Category({
+  params,
+}: {
+  params: { slug: string };
+}) {
   const category = params.slug as string;
-
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await fetch(`/api/category/${category}`, {
-          method: "GET",
-        });
-        const blog = await response.json();
-        if (response.status === 404) {
-          setError(blog.error);
-        } else {
-          setBlogs(blog);
-        }
-      } catch (err) {
-        setError("An error occurred while fetching the blog." as any);
-        console.log(err);
-      }
-    };
-    fetchBlogs();
-  }, [category]);
+  const blogs = await fetchCategory(category);
 
   return (
     <>

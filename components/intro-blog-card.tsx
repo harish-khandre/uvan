@@ -1,10 +1,6 @@
-"use client";
-
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
-import HomeSkeletonCard from "./home-skeleton-card";
 import BlogContent from "./blog-content";
 
 interface BlogData {
@@ -16,41 +12,33 @@ interface BlogData {
   createdAt: any;
 }
 
-export const IntroBlogCard = () => {
-  const [blogs, setBlogs] = useState<BlogData[]>([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setLoading(true);
-        const response = await fetch("/api/blogs", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          next: {
-            revalidate: 60,
-          },
-        });
+const fetchAllBlogs = async () => {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      next: {
+        revalidate: 3600,
+      },
+    });
 
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setBlogs(data);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    fetchBlogs();
-  }, []);
+export const IntroBlogCard = async () => {
+  const blogs = await fetchAllBlogs();
 
   return (
-    <section className="body-font cursor-pointer space-y-8 ml-8 h-full">
-      {loading && <HomeSkeletonCard />}
-      {blogs.map((blog) => (
+    <article className="body-font cursor-pointer space-y-8 ml-8 h-full">
+      {blogs.map((blog: BlogData) => (
         <Link href={`/blog/${blog._id}`} key={blog._id}>
           <div className="container  mx-auto  flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
             <div className="w-full md:w-1/4 lg:w-1/5 mb-4  md:mb-0 flex justify-center">
@@ -59,7 +47,7 @@ export const IntroBlogCard = () => {
                 width={150}
                 height={150}
                 alt={blog.title}
-                src={blog.thumbnail || "https://dummyimage.com/720x600"}
+                src={blog.thumbnail}
               />
             </div>
             <div className="w-full md:w-3/4 lg:w-4/5 md:pl-8 lg:pl-12 flex flex-col md:items-start md:text-left items-center text-center mb-4">
@@ -81,6 +69,6 @@ export const IntroBlogCard = () => {
           </div>
         </Link>
       ))}
-    </section>
+    </article>
   );
 };

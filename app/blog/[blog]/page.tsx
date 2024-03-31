@@ -1,28 +1,30 @@
-"use client";
-import { BlogCard } from "@/components/blog-card";
-import Link from "next/link";
-import { useParams } from "next/navigation";
+import { BlogPage } from "@/components/blog-page";
+import { Metadata } from "next";
 
-export default function Blog() {
-  const params = useParams();
-  const id = params.blog as string;
+export async function generateMetaData({ params }: any): Promise<Metadata> {
+  const response = await fetch(`/api/blogs/blog/${params.blog}`, {
+    method: "GET",
+  });
+  const blog = await response.json();
 
-  if (!id || id === undefined || id === null) {
-    return (
-      <div className="flex flex-col justify-center items-center h-screen space-y-4">
-        <h1 className="font-bold text-xl">Blog not found</h1>
-        <Link href="/">
-          <button className="border-2 border-black  shadow-md shadow-black rounded-full px-4 py-2 hover:shadow-sm hover:bg-zinc-800 hover:text-white transition duration-300 ease-out ">
-            Home
-          </button>
-        </Link>
-      </div>
-    );
-  }
+  return {
+    title: blog.title,
+    openGraph: {
+      images: [
+        {
+          url: blog.thumbnail,
+        },
+      ],
+    },
+  };
+}
+
+export default function Blog({ params }: any) {
+  const id = params.blog;
 
   return (
     <div className="flex justify-center items-center h-full">
-      <BlogCard id={id} />
+      <BlogPage id={id} />
     </div>
   );
 }

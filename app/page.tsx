@@ -1,4 +1,4 @@
-import { Main } from "@/components/blogs";
+import { Main } from "@/components/main";
 import Categories from "@/components/categories";
 
 export default function Home() {
