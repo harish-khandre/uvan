@@ -40,7 +40,7 @@ export const IntroBlogCard = async () => {
     <article className="body-font cursor-pointer space-y-8 ml-8 h-full">
       {blogs.map((blog: BlogData) => (
         <Link href={`/blog/${blog._id}`} key={blog._id}>
-          <div className="container  mx-auto  flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
+          <div className="container mx-auto flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
             <div className="w-full md:w-1/4 lg:w-1/5 mb-4  md:mb-0 flex justify-center">
               <Image
                 className="object-cover aspect-square  rounded-lg "

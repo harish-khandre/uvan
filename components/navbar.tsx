@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -16,9 +17,12 @@ export const Navbar = () => {
       <div className="items-center px-4 max-w-screen-xl mx-auto md:flex md:px-8">
         <div className="flex items-center justify-between py-3 md:py-1 md:block">
           <Link href="/">
-            <h1 className="text-2xl sm:text-4xl font-bold font-mono tracking-wide ">
-              Uvan
-            </h1>
+            <Image
+              src="/uvan.tech.png"
+              alt="uvan tech"
+              height={80}
+              width={80}
+            />
           </Link>
           <div className="md:hidden">
             <button

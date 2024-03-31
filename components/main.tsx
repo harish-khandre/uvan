@@ -3,7 +3,7 @@ import { RT } from "./recruitment-table";
 
 export const Main = () => {
   return (
-    <div className="flex gap-4 mt-8 justify-start items-start">
+    <div className="flex gap-4 mt-4 justify-start items-start">
       <div className="blogs-section w-[100%] md:w-[70%]    ">
         <IntroBlogCard />
       </div>
