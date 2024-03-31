@@ -1,12 +1,14 @@
 import { BlogPage } from "@/components/blog-page";
 import { Metadata } from "next";
 
-export async function generateMetaData({ params }: any): Promise<Metadata> {
-  const response = await fetch(`/api/blogs/blog/${params.blog}`, {
-    method: "GET",
-  });
+export async function generateMetadata({ params }: any): Promise<Metadata> {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${params.blog}`,
+    {
+      method: "GET",
+    },
+  );
   const blog = await response.json();
-
   return {
     title: blog.title,
     openGraph: {
