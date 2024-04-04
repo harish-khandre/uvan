@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 interface RecruitmentData {
   jobTitle: string;
   lastDate: string;
+  link: string;
 }
 
 const fetchRT = async () => {
@@ -49,8 +52,9 @@ export const RT = async () => {
               key={item.jobTitle}
               className="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
             >
-              <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
-                {item.jobTitle}
+              {" "}
+              <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle hover:text-blue-900 transition duration-300 ease-in-out">
+                <Link href={`${item.link}`}>{item.jobTitle}</Link>
               </td>
               <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
                 {item.lastDate}
