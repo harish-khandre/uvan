@@ -18,7 +18,7 @@ const fetchBlog = async () => {
           "Content-Type": "application/json",
         },
         next: {
-          revalidate: 3600,
+          revalidate: 60,
         },
       },
     );
