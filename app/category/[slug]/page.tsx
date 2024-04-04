@@ -55,7 +55,7 @@ export default async function Category({
         <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog: BlogData) => (
             <article
-              className="max-w-md mx-auto mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
+              className="max-w-md m-4 mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
               key={blog._id}
             >
               <Link href={`/blog/${blog._id}`}>
@@ -76,9 +76,6 @@ export default async function Category({
                 </div>
                 <div className="pt-3 ml-4 mr-2 mb-3">
                   <h3 className="text-xl text-gray-900">{blog.title}:</h3>
-                  <p className="text-gray-800 text-sm mt-1 h-20 overflow-hidden ">
-                    <BlogContent content={blog.content} />
-                  </p>
                 </div>
               </Link>
             </article>
