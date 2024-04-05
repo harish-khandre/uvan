@@ -1,6 +1,13 @@
 import { BlogPage } from "@/components/blog-page";
 import { Metadata } from "next";
 
+export async function generateStaticParams() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`);
+  const blogs = await response.json();
+  //@ts-ignore
+  return blogs.map((blog) => blog?._id);
+}
+
 export async function generateMetadata({ params }: any): Promise<Metadata> {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${params.blog}`,

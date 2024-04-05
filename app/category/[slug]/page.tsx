@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
-import BlogContent from "@/components/blog-content";
 
 interface BlogData {
   _id: string;

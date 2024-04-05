@@ -35,13 +35,6 @@ const fetchBlog = async (id: string) => {
   }
 };
 
-export async function generateStaticParams() {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`);
-
-  const { blogs } = await response.json();
-  return blogs.map(({ _id }: any) => _id);
-}
-
 export const BlogPage = async ({ id }: { id: string }) => {
   const blogs = await fetchBlog(id);
   return (
