@@ -15,10 +15,6 @@ interface BlogData {
 const fetchAllBlogs = async () => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
       next: {
         revalidate: 60,
       },

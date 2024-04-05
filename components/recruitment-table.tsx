@@ -11,10 +11,6 @@ const fetchRT = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
       {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
         next: {
           revalidate: 60,
         },

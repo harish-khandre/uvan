@@ -16,10 +16,6 @@ const fetchBlog = async (id: string) => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${id}`,
       {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
         next: {
           revalidate: 60,
         },
