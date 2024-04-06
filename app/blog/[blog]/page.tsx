@@ -1,4 +1,4 @@
-import { BlogPage } from "@/components/blog-page";
+import  BlogPage  from "@/components/blog-page";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
