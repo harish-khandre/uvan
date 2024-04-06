@@ -1,6 +1,6 @@
 import YoutubeEmbed from "./youtube-embed";
 import BlogContent from "./blog-content";
-import { OtherBlogs } from "./other-blogs";
+import OtherBlogs from "./other-blogs";
 
 interface BlogData {
   _id: string;
@@ -11,7 +11,7 @@ interface BlogData {
   category: string;
 }
 
-const fetchBlog = async (id: string) => {
+async function fetchBlog(id: string) {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${id}`,
@@ -24,9 +24,9 @@ const fetchBlog = async (id: string) => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-export const BlogPage = async ({ id }: { id: string }) => {
+export default async function BlogPage({ id }: { id: string }) {
   const blogs = await fetchBlog(id);
   return (
     <>
@@ -61,4 +61,4 @@ export const BlogPage = async ({ id }: { id: string }) => {
       ))}
     </>
   );
-};
+}

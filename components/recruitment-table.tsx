@@ -6,7 +6,7 @@ interface RecruitmentData {
   link: string;
 }
 
-const fetchRT = async () => {
+async function fetchRT() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
@@ -22,9 +22,9 @@ const fetchRT = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-export const RT = async () => {
+export default async function RT() {
   const data = await fetchRT();
 
   return (
@@ -59,4 +59,4 @@ export const RT = async () => {
       </table>
     </div>
   );
-};
+}

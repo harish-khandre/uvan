@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const fetchCategories = async () => {
+async function fetchCategories() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/categories`,
@@ -16,7 +16,7 @@ const fetchCategories = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 export default async function Categories() {
   const categories = await fetchCategories();
   return (

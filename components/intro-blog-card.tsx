@@ -12,7 +12,7 @@ interface BlogData {
   createdAt: any;
 }
 
-const fetchAllBlogs = async () => {
+async function fetchAllBlogs() {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
       cache: "no-store",
@@ -25,9 +25,9 @@ const fetchAllBlogs = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-export const IntroBlogCard = async () => {
+export default async function IntroBlogCard() {
   const blogs = await fetchAllBlogs();
 
   return (
@@ -65,4 +65,4 @@ export const IntroBlogCard = async () => {
       ))}
     </article>
   );
-};
+}

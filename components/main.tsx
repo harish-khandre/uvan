@@ -1,5 +1,5 @@
-import { IntroBlogCard } from "./intro-blog-card";
-import { RT } from "./recruitment-table";
+import IntroBlogCard from "./intro-blog-card";
+import RT from "./recruitment-table";
 
 export const Main = () => {
   return (

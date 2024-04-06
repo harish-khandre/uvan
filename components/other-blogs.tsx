@@ -8,7 +8,7 @@ interface BlogData {
   category: string;
 }
 
-const fetchBlog = async () => {
+async function fetchBlog() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/other-blogs`,
@@ -24,9 +24,9 @@ const fetchBlog = async () => {
   } catch (error) {
     console.log(error);
   }
-};
+}
 
-export const OtherBlogs = async () => {
+export default async function OtherBlogs() {
   const blog = await fetchBlog();
 
   return (
@@ -56,4 +56,4 @@ export const OtherBlogs = async () => {
       </div>
     </>
   );
-};
+}
