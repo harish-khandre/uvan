@@ -5,9 +5,7 @@ const fetchCategories = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/categories`,
       {
-        next: {
-          revalidate: 60,
-        },
+        cache: "no-store",
       },
     );
 

@@ -11,9 +11,7 @@ const fetchRT = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
       {
-        next: {
-          revalidate: 60,
-        },
+        cache: "no-store",
       },
     );
 

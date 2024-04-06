@@ -13,9 +13,7 @@ const fetchBlog = async () => {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/other-blogs`,
       {
-        next: {
-          revalidate: 60,
-        },
+        cache: "no-store",
       },
     );
 

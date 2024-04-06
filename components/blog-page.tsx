@@ -15,11 +15,6 @@ const fetchBlog = async (id: string) => {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${id}`,
-      {
-        next: {
-          revalidate: 60,
-        },
-      },
     );
 
     if (!response.ok) {
