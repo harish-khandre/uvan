@@ -112,3 +112,26 @@ body::-webkit-scrollbar-track {
 p {
   font-family: var(--font-mont);
 }
+
+.scrollie::-webkit-scrollbar {
+  background: transparent;
+}
+.scrollie::-webkit-scrollbar-thumb {
+  background-color: #9ca3af;
+  border-radius: 5px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+  cursor: grab;
+}
+
+.scrollie::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body {
+  padding: 0px !important;
+  margin: 0px !important;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
