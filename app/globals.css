@@ -127,11 +127,3 @@ p {
 .scrollie::-webkit-scrollbar-track {
   background: transparent;
 }
-
-body {
-  padding: 0px !important;
-  margin: 0px !important;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-}
