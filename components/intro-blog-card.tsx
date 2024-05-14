@@ -14,9 +14,7 @@ interface BlogData {
 
 async function fetchAllBlogs() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`, {
-      cache: "no-store",
-    });
+    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

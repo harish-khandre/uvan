@@ -4,9 +4,6 @@ async function fetchCategories() {
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_URL}/api/blogs/categories`,
-      {
-        cache: "no-store",
-      },
     );
 
     if (!response.ok) {
@@ -20,8 +17,8 @@ async function fetchCategories() {
 export default async function Categories() {
   const categories = await fetchCategories();
   return (
-    <div className="flex justify-start lg:pl-16 py-5 items-center h-full  lg:w-[70%] scrollie">
-      <p className="p-2 text-gray-500">Categories</p>
+    <div className="flex justify-start lg:pl-16 py-5 items-center h-full lg:w-[70%] scrollie">
+      <p className="pb-4 text-gray-500">Categories</p>
       <p className="p-2"></p>
       <div className=" flex justify-start items-center gap-x-4 p-2 overflow-x-scroll scrollie text-sm">
         {categories.map((category: string) => (

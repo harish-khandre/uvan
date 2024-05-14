@@ -9,11 +9,7 @@ interface RecruitmentData {
 async function fetchRT() {
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
-      {
-        cache: "no-store",
-      },
-    );
+      `${process.env.NEXT_PUBLIC_URL}/api/recruitment`);
 
     if (!response.ok) {
       throw new Error("Network response was not ok");
