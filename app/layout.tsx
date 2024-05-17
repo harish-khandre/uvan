@@ -25,7 +25,7 @@ export default function RootLayout({
     <>
       <html lang="en">
         <head>
-          <AdSense pId="ca-pub-2173260918120839" />
+          <AdSense />
         </head>
         <body className={merri.className}>
           <Navbar />

@@ -1,12 +1,10 @@
 import Script from "next/script";
 
-const AdSense = ({ pId }: { pId: string }) => {
+const AdSense = () => {
   return (
     <Script
       async
-      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${pId}`}
-      crossOrigin="anonymous"
-      strategy="afterInteractive"
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2173260918120839`}
     />
   );
 };
