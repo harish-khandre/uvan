@@ -3,7 +3,7 @@ import { Merriweather } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
-import AdSense from "@/components/AdSense";
+import Head from "next/head";
 
 const merri = Merriweather({ weight: "400", subsets: ["latin"] });
 
@@ -24,9 +24,13 @@ export default function RootLayout({
   return (
     <>
       <html lang="en">
-        <head>
-          <AdSense />
-        </head>
+        <Head>
+          <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2173260918120839"
+            crossOrigin="anonymous"
+          ></script>
+        </Head>
         <body className={merri.className}>
           <Navbar />
           {children}
