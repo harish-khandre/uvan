@@ -1,24 +1,17 @@
 import { NextResponse } from "next/server";
-import { MongoClient } from "mongodb";
-
-const uri = process.env.DATABASE_URL as string;
+import { db } from "@/lib/db";
 
 export async function GET() {
-  const client = new MongoClient(uri);
-
   try {
-    const db = client.db("App-data");
-    const blog = await db
-      .collection("Uvan")
-      .find()
-      .sort({ _id: -1 })
-      .limit(1)
-      .toArray();
-    return NextResponse.json(blog);
+    const latestBlog = await db.blog.findFirst({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+
+    return NextResponse.json(latestBlog);
   } catch (e) {
     console.error(e);
     return NextResponse.json(new Error("Failed to fetch data"));
-  } finally {
-    await client.close();
   }
 }

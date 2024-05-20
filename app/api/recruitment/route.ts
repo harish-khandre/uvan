@@ -1,18 +1,14 @@
-import { MongoClient } from "mongodb";
 import { NextResponse } from "next/server";
+import { db } from "@/lib/db";
 
-const mongoClient = new MongoClient(process.env.DATABASE_URL as string);
 export async function GET() {
   try {
-    await mongoClient.connect();
-    const db = mongoClient.db("App-data");
-    const recruitment = db.collection("recruitment");
-
-    const recruitmentData = await recruitment
-      .find()
-      .sort({ _id: -1 })
-      .limit(10)
-      .toArray();
+    const recruitmentData = await db.recruitment.findMany({
+      take: 10,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
     return NextResponse.json(recruitmentData);
   } catch (error) {
     console.log("Error fetching data from MongoDB:", error);
@@ -20,7 +16,5 @@ export async function GET() {
       { message: "Failed to fetch data from MongoDB" },
       { status: 500 },
     );
-  } finally {
-    await mongoClient.close();
   }
 }

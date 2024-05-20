@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { MongoClient, ObjectId } from "mongodb";
-
-const uri = process.env.DATABASE_URL as string;
+import { db } from "@/lib/db";
 
 export async function GET(request: NextRequest) {
   const url = request.nextUrl;
@@ -15,17 +13,12 @@ export async function GET(request: NextRequest) {
     );
   }
 
-  const client = new MongoClient(uri);
-
   try {
-    await client.connect();
-    const db = client.db("App-data");
-    const query = { _id: new ObjectId(id) };
-    const blog = await db.collection("Uvan").find(query).toArray();
-
-    if (!blog || (Array.isArray(blog) && blog.length === 0)) {
-      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
-    }
+    const blog = await db.blog.findUnique({
+      where: {
+        id: id,
+      },
+    });
 
     return NextResponse.json(blog);
   } catch (e) {
@@ -34,7 +27,5 @@ export async function GET(request: NextRequest) {
       { error: "Failed to fetch data" },
       { status: 500 },
     );
-  } finally {
-    await client.close();
   }
 }
