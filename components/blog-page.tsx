@@ -1,28 +1,19 @@
 import YoutubeEmbed from "./youtube-embed";
 import BlogContent from "./blog-content";
 import OtherBlogs from "./other-blogs";
-
-interface BlogData {
-  id: string;
-  youtubeLink: string;
-  title: string;
-  content: string;
-  thumbnail: string;
-  category: string;
-}
+import { db } from "@/lib/db";
 
 async function fetchBlog(id: string) {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${id}`,
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+    const blog = await db.blog.findUnique({
+      where: {
+        id: id,
+      },
+    });
+    return blog;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
@@ -32,7 +23,7 @@ export default async function BlogPage({ id }: { id: string }) {
 
   return (
     <>
-      {blogs.map((blog: BlogData) => (
+      {blogs.map((blog: any) => (
         <div
           key={blog.id}
           className="flex border-2 h-full w-full py-4 px-8 gap-4"

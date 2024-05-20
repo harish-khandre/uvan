@@ -3,14 +3,6 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { db } from "@/lib/db";
 
-interface BlogData {
-  id: string;
-  title: string;
-  content: string;
-  thumbnail: string;
-  createdAt: string;
-}
-
 const fetchCategory = async (category: string) => {
   try {
     const blogs = await db.blog.findMany({
