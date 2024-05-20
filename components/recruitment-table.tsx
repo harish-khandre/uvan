@@ -1,4 +1,3 @@
-import { db } from "@/lib/db";
 import Link from "next/link";
 
 interface RecruitmentData {
@@ -9,13 +8,14 @@ interface RecruitmentData {
 
 async function fetchRT() {
   try {
-    const data = await db.recruitment.findMany({
-      take: 10,
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-    return data;
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
+    );
+
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json();
   } catch (error) {
     console.log(error);
   }
