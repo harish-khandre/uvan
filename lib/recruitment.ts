@@ -1,6 +1,6 @@
 export const recruitment = [
   {
-    _id: {
+    id: {
       $oid: "660e83d9aa6a8467d3818226",
     },
     jobTitle: "(IPPB Bharti) इंडिया पोस्ट पेमेंट्स बँकेत 47 जागांसाठी भरती",
@@ -10,7 +10,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66100688e68ef82385a95b4b",
     },
     jobTitle: "Police bharati 2024। पोलीस भरती 2024",
@@ -21,7 +21,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66100e1023b368a7af49494b",
     },
     jobTitle:
@@ -33,7 +33,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66100ed7473a45b48b99ca41",
     },
     jobTitle: "(AAI Bharti) भारतीय विमानतळ प्राधिकरणात 490 जागांसाठी भरती",
@@ -44,7 +44,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66100f72473a45b48b99ca42",
     },
     jobTitle: "Typing Test Updates ",
@@ -55,7 +55,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66101482979aa28c616ef470",
     },
     jobTitle:
@@ -67,7 +67,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "6610150c1a64d6b53efcc21a",
     },
     jobTitle: "(NVS Bharti) नवोदय विद्यालय समिती मध्ये 1377 जागांसाठी भरती",
@@ -78,7 +78,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661015c51a64d6b53efcc21b",
     },
     jobTitle: "(RPF Bharti) रेल्वे सुरक्षा दलात 4660 जागांसाठी भरती",
@@ -89,7 +89,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661016571a64d6b53efcc21c",
     },
     jobTitle:
@@ -101,7 +101,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661016d81a64d6b53efcc21d",
     },
     jobTitle: "(Bank of India Bharti) बँक ऑफ इंडिया मध्ये 143 जागांसाठी भरती",
@@ -112,7 +112,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "6610174c1a64d6b53efcc21e",
     },
     jobTitle: "(NGEL Bharti) NTPC ग्रीन एनर्जी लिमिटेड मध्ये 63 जागांसाठी भरती",
@@ -123,7 +123,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661017ba1a64d6b53efcc21f",
     },
     jobTitle:
@@ -135,7 +135,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66139e5ed5c04d85edcd57ba",
     },
     jobTitle:
@@ -147,7 +147,7 @@ export const recruitment = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661639a2c648dced4246dcf0",
     },
     jobTitle:

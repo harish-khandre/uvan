@@ -1,6 +1,6 @@
 export const blogs = [
   {
-    _id: {
+    id: {
       $oid: "660e3fb782c1c2d2e11acd7d",
     },
     title:
@@ -17,7 +17,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "660e4a1154a67e64ad2afea7",
     },
     title:
@@ -34,7 +34,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "660e81bdaa6a8467d381821e",
     },
     title:
@@ -51,7 +51,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "660fef476660fd4f43976a97",
     },
     title:
@@ -68,7 +68,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "660ff4e09d46cf2142ff48b8",
     },
     title:
@@ -85,7 +85,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "660fffa216cc45b9826d0f0d",
     },
     title:
@@ -102,7 +102,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66102877f1d548c91dd14385",
     },
     title:
@@ -119,7 +119,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66110d6bde4640c35f743c3b",
     },
     title:
@@ -136,7 +136,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66111ad32b879d4e07d9951a",
     },
     title:
@@ -153,7 +153,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66111e83ebbadac177fdba2f",
     },
     title:
@@ -170,7 +170,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "661122c2f7180ace0218dea9",
     },
     title:
@@ -187,7 +187,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "6611293f0d99c580871d063e",
     },
     title:
@@ -204,7 +204,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66112d11582cf6d351d519dc",
     },
     title:
@@ -221,7 +221,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66139875df05747fbdb92b74",
     },
     title:
@@ -238,7 +238,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "6613e6dd5b77a48de0ab209f",
     },
     title:
@@ -255,7 +255,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66432edb7e5ba45c966cbb15",
     },
     title:
@@ -272,7 +272,7 @@ export const blogs = [
     },
   },
   {
-    _id: {
+    id: {
       $oid: "66472d13bf518752fae5409c",
     },
     title:

@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface BlogData {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   thumbnail: string;
@@ -41,7 +41,7 @@ export async function Latest() {
           </div>
           {blogs.map((blog: BlogData) => (
             <div
-              key={blog._id}
+              key={blog.id}
               className="bg-gray-50 group border-xl px-4 py-2 rounded-xl flex gap-4 shadow-gray-950 shadow-sm flex-col sm:flex-row "
             >
               <Image

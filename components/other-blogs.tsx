@@ -1,33 +1,24 @@
+import { db } from "@/lib/db";
 import Image from "next/image";
 import Link from "next/link";
 
-interface BlogData {
-  _id: string;
-  title: string;
-  thumbnail: string;
-  category: string;
-}
-
 async function fetchBlog() {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/other-blogs`,
-      {
-        cache: "no-store",
+    const blogs = await db.blog.findMany({
+      take: 5,
+      orderBy: {
+        createdAt: "desc",
       },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+    });
+    return blogs;
   } catch (error) {
     console.log(error);
+    return [];
   }
 }
 
 export default async function OtherBlogs() {
-  const blog = await fetchBlog();
+  const blogs = await fetchBlog();
 
   return (
     <>
@@ -36,8 +27,8 @@ export default async function OtherBlogs() {
           <div className="border-b">
             <h1 className=" sm:text-lg font-bold text-gray-500">Other Blogs</h1>
           </div>
-          {blog.map((blog: BlogData) => (
-            <Link href={blog._id} key={blog._id}>
+          {blogs.map((blog: any) => (
+            <Link href={blog.id} key={blog.id}>
               <div className=" px-2 py-2  flex gap-4 shadow-gray-950  flex-col sm:flex-row justify-center items-center">
                 <Image
                   width={46}

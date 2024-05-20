@@ -3,7 +3,7 @@ import BlogContent from "./blog-content";
 import OtherBlogs from "./other-blogs";
 
 interface BlogData {
-  _id: string;
+  id: string;
   youtubeLink: string;
   title: string;
   content: string;
@@ -27,12 +27,14 @@ async function fetchBlog(id: string) {
 }
 
 export default async function BlogPage({ id }: { id: string }) {
-  const blogs = await fetchBlog(id);
+  const objectBlogs = await fetchBlog(id);
+  const blogs = [objectBlogs];
+
   return (
     <>
       {blogs.map((blog: BlogData) => (
         <div
-          key={blog._id}
+          key={blog.id}
           className="flex border-2 h-full w-full py-4 px-8 gap-4"
         >
           <div className="blog-section bg-gray-50 w-full lg:w-[70%] h-full border-2 border-gray-200  rounded-2xl ">
@@ -48,7 +50,7 @@ export default async function BlogPage({ id }: { id: string }) {
               </p>
               <hr />
               <section className="text-lg sm:text-2xl  p-3">
-                <BlogContent content={blog.content} />
+                <BlogContent content={JSON.parse(blog.content)} />
               </section>
             </div>
           </div>

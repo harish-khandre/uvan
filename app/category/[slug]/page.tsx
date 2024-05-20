@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
+import { db } from "@/lib/db";
 
 interface BlogData {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   thumbnail: string;
@@ -12,25 +13,15 @@ interface BlogData {
 
 const fetchCategory = async (category: string) => {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/category/${category}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        next: {
-          revalidate: 60,
-        },
+    const blogs = await db.blog.findMany({
+      where: {
+        category: category,
       },
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+    });
+    return blogs;
   } catch (error) {
     console.log(error);
+    return [];
   }
 };
 
@@ -52,12 +43,12 @@ export default async function Category({
           </p>
         </div>
         <div className="mt-12 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {blogs.map((blog: BlogData) => (
+          {blogs.map((blog: any) => (
             <article
               className="max-w-md m-4 mt-4 shadow-lg border rounded-md duration-300 hover:shadow-sm"
-              key={blog._id}
+              key={blog.id}
             >
-              <Link href={`/blog/${blog._id}`}>
+              <Link href={`/blog/${blog.id}`}>
                 <Image
                   width={447}
                   height={192}
@@ -69,7 +60,10 @@ export default async function Category({
                 <div className="flex blog-center mt-2 pt-3 ml-4 mr-2">
                   <div className="ml-3">
                     <span className="block text-gray-400 text-sm">
-                      {format(blog.createdAt, "MMMM dd, yyyy")}
+                      {format(
+                        blog.createdAt.toISOString() as any,
+                        "MMMM dd, yyyy",
+                      )}
                     </span>
                   </div>
                 </div>

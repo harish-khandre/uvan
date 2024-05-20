@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import BlogContent from "./blog-content";
 
 interface BlogData {
-  _id: string;
+  id: string;
   title: string;
   content: string;
   thumbnail: string;
@@ -31,7 +31,7 @@ export default async function IntroBlogCard() {
   return (
     <article className="body-font cursor-pointer space-y-8 ml-8 h-full">
       {blogs.map((blog: BlogData) => (
-        <Link href={`/blog/${blog._id}`} key={blog._id}>
+        <Link href={`/blog/${blog.id}`} key={blog.id}>
           <div className="container mx-auto flex flex-col items-center border-b-2 border-zinc-100 group md:flex-row md:h-56 md:items-center">
             <div className="w-full md:w-1/4 lg:w-1/5 mb-4  md:mb-0 flex justify-center">
               <Image
@@ -47,7 +47,7 @@ export default async function IntroBlogCard() {
                 {blog.title}
               </h1>
               <p className="mb-4 h-12 text-gray-900 line-clamp-2 font-medium leading-relaxed">
-                <BlogContent content={blog.content} />
+                <BlogContent content={JSON.parse(blog.content)} />
               </p>
               <div className="flex justify-center lg:pl-14 mt-4 items-center gap-x-4">
                 <p className="text-xs bg-zinc-200  rounded-full  px-4 py-2">
