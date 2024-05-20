@@ -1,20 +1,20 @@
-import  BlogPage  from "@/components/blog-page";
+import BlogPage from "@/components/blog-page";
+import { db } from "@/lib/db";
 import { Metadata } from "next";
 
 export async function generateMetadata({ params }: any): Promise<Metadata> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_URL}/api/blogs/blog/${params.blog}`,
-    {
-      method: "GET",
+  const blog = await db.blog.findUnique({
+    where: {
+      id: params.blog,
     },
-  );
-  const blog = await response.json();
+  });
+
   return {
-    title: blog.title,
+    title: blog?.title,
     openGraph: {
       images: [
         {
-          url: blog.thumbnail,
+          url: blog?.thumbnail as string,
         },
       ],
     },

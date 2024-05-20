@@ -1,17 +1,22 @@
+import { db } from "@/lib/db";
 import { MetadataRoute } from "next/types";
 
-interface BlogPost {
-  id: string;
-  lastModified: string;
-}
+const fetchBlogs = async () => {
+  try {
+    const blogs = await db.blog.findMany();
+    return blogs;
+  } catch (error) {
+    console.error("Error in sitemap :", error);
+    return [];
+  }
+};
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
-    const response = await fetch(`https://uvan.tech/api/blogs`);
-    const blogPosts: BlogPost[] = await response.json();
+    const blogPosts: any = await fetchBlogs();
 
     const postEntries: MetadataRoute.Sitemap = blogPosts.map(
-      ({ id, lastModified }) => ({
+      ({ id, lastModified }: any) => ({
         url: `/blog/${id}`,
         lastModified,
         changeFreq: "weekly",
