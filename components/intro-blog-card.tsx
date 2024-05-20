@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { format } from "date-fns";
 import BlogContent from "./blog-content";
+import { db } from "@/lib/db";
+import NotFound from "@/app/not-found";
 
 interface BlogData {
   id: string;
@@ -14,12 +16,12 @@ interface BlogData {
 
 async function fetchAllBlogs() {
   try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/blogs`);
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+    const blogs = await db.blog.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return blogs;
   } catch (error) {
     console.log(error);
   }
@@ -27,6 +29,10 @@ async function fetchAllBlogs() {
 
 export default async function IntroBlogCard() {
   const blogs = await fetchAllBlogs();
+
+  if (!blogs) {
+    return <NotFound />;
+  }
 
   return (
     <article className="body-font cursor-pointer space-y-8 ml-8 h-full">
