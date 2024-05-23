@@ -1,3 +1,4 @@
+import { db } from "@/lib/db";
 import Link from "next/link";
 
 interface RecruitmentData {
@@ -8,14 +9,14 @@ interface RecruitmentData {
 
 async function fetchRT() {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_URL}/api/recruitment`,
-    );
-
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
+    const recruitmentData = await db.recruitment.findMany({
+      take: 10,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    console.log("fetchRT:", recruitmentData);
+    return recruitmentData;
   } catch (error) {
     console.log(error);
   }
@@ -23,6 +24,10 @@ async function fetchRT() {
 
 export default async function RT() {
   const data = await fetchRT();
+
+  if (!data) {
+    return <p>Failed to fetch data</p>;
+  }
 
   return (
     <div className="relative w-full overflow-auto px-4 ">
@@ -43,9 +48,8 @@ export default async function RT() {
               key={item.jobTitle}
               className="hover:bg-muted/50 data-[state=selected]:bg-muted border-b transition-colors"
             >
-              {" "}
               <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle hover:text-blue-900 transition duration-300 ease-in-out">
-                <Link href={`${item.link}`}>{item.jobTitle}</Link>
+                <Link href={item.link}>{item.jobTitle}</Link>
               </td>
               <td className="[&:has([role=checkbox])]:pr-0 p-4 align-middle">
                 {item.lastDate}
