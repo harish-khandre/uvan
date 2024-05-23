@@ -28,4 +28,5 @@ model Recruitment {
   jobTitle  String
   lastDate  String
   createdAt DateTime @default(now())
+  link      String
 }

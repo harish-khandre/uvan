@@ -1,16 +1,6 @@
 export const recruitment = [
   {
     id: {
-      $oid: "660e83d9aa6a8467d3818226",
-    },
-    jobTitle: "(IPPB Bharti) इंडिया पोस्ट पेमेंट्स बँकेत 47 जागांसाठी भरती",
-    lastDate: "05/04/2024",
-    createdAt: {
-      $date: "2024-04-04T10:41:29.435Z",
-    },
-  },
-  {
-    id: {
       $oid: "66100688e68ef82385a95b4b",
     },
     jobTitle: "Police bharati 2024। पोलीस भरती 2024",

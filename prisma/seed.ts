@@ -16,6 +16,7 @@ interface Blog {
 interface Recruitment {
   jobTitle: string;
   lastDate: string;
+  link: string;
   createdAt: Date;
 }
 
@@ -35,8 +36,9 @@ const transformedBlogData = blogs.map(transformBlog);
 function transformJobData(data: any): Recruitment {
   return {
     jobTitle: data.jobTitle,
-    lastDate: data.lastDate, 
+    lastDate: data.lastDate,
     createdAt: new Date(data.createdAt.$date),
+    link: data.link,
   };
 }
 
