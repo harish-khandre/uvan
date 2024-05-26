@@ -7,6 +7,8 @@ interface RecruitmentData {
   link: string;
 }
 
+export const revalidate = 3600;
+
 async function fetchRT() {
   try {
     const recruitmentData = await db.recruitment.findMany({

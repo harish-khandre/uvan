@@ -27,6 +27,8 @@ async function fetchAllBlogs() {
   }
 }
 
+export const revalidate = 3600;
+
 export default async function IntroBlogCard() {
   const blogs = await fetchAllBlogs();
 
