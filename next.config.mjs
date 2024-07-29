@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "breeditdonationpage.s3.ap-south-1.amazonaws.com",
       },
+       {
+        protocol: "https",
+        hostname: "uvan-tech.s3.eu-north-1.amazonaws.com",
+      },
     ],
   },
 };
